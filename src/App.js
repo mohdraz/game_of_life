@@ -2,21 +2,26 @@ import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import ScriptTag from "react-script-tag";
 
-const jsfile = require("./game_of_life/main.js");
+// const jsfile = require("./game_of_life/main.js");
+
+import CreateGrid from "./components/CreateGrid";
 
 function App() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = jsfile;
-    script.async = true;
+  // useEffect(() => {
+  //   document.addEventListener("DOMContentLoaded", function () {
+  //     const script = document.createElement("script");
+  //     script.src = jsfile;
+  //     script.async = true;
 
-    const location = document.querySelector(".layout__generation-grid");
-    location.appendChild(script);
+  //     const location = document.querySelector(".layout__generation-grid");
+  //     location.appendChild(script);
 
-    return () => {
-      location.removeChild(script);
-    };
-  }, []);
+  //     return () => {
+  //       location.removeChild(script);
+  //     };
+  //   });
+  // }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -27,9 +32,10 @@ function App() {
       <main className="layout">
         <div className="layout__generation">
           <h2 className="heading__secondary">Generation: #</h2>
-          <section className="layout__generation-grid">
+          <section id="grid" className="layout__generation-grid">
             Grid Here
             {/* <ScriptTag type="text/javascript" src={jsfile} /> */}
+            <CreateGrid />
           </section>
           <section className="layout__generation-buttons">
             <button className="btn">Play</button>
